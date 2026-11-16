@@ -1,0 +1,89 @@
+# Configurazione della pipeline "Mappa zone buone".
+# Modifica raggi (m) e pesi delle categorie qui, poi rilancia il workflow su GitHub (Actions → "Build e pubblica" → Run workflow).
+# I pesi dei GRUPPI e dei servizi si regolano anche dal vivo nella web app.
+
+region:
+  name: Lombardia
+  osm_admin_name: Lombardia      # relazione boundary=administrative admin_level=4
+  bbox: [8.49, 44.68, 11.43, 46.64]  # lon_min, lat_min, lon_max, lat_max (fallback)
+  margin_deg: 0.12               # fonti fuori regione considerate fino a ~10 km dal confine
+
+grid_zoom: 11                    # risoluzione di calcolo: pixel delle tile z11 (~53 m a 45°N)
+data_min_zoom: 6
+
+osm_pbf:                          # estratti Geofabrik (vengono ritagliati sulla regione + margine)
+  - https://download.geofabrik.de/europe/italy/nord-ovest-latest.osm.pbf
+  - https://download.geofabrik.de/europe/italy/nord-est-latest.osm.pbf
+  - https://download.geofabrik.de/europe/switzerland-latest.osm.pbf
+
+# mode: air = aerodisperso (segue il vento, risente di calme e piogge) | noise = rumore | soil = suolo/acque
+categories:
+  industria:           {label: "Aree industriali",                         group: industria,   R: 500,  w: 1.0, mode: air}
+  logistica:           {label: "Poli logistici / grandi magazzini",        group: industria,   R: 400,  w: 0.7, mode: air}
+  acciaieria:          {label: "Acciaierie, fonderie, siderurgia",         group: pesante,     R: 3000, w: 1.8, mode: air}
+  raffineria:          {label: "Raffinerie / petrolchimico",               group: pesante,     R: 4000, w: 2.0, mode: air}
+  chimico:             {label: "Impianti chimici e farmaceutici",          group: pesante,     R: 1500, w: 1.4, mode: air}
+  inceneritore:        {label: "Inceneritori / termovalorizzatori",        group: pesante,     R: 3000, w: 1.6, mode: air}
+  centrale:            {label: "Centrali termoelettriche",                 group: pesante,     R: 2000, w: 1.0, mode: air}
+  bitume:              {label: "Impianti bitume / asfalto",                group: pesante,     R: 1500, w: 1.3, mode: air}
+  rifiuti:             {label: "Impianti rifiuti, depuratori, piattaforme",group: rifiuti,     R: 600,  w: 0.8, mode: air}
+  discarica:           {label: "Discariche",                               group: rifiuti,     R: 1500, w: 1.4, mode: air}
+  cava:                {label: "Cave",                                     group: rifiuti,     R: 800,  w: 0.8, mode: air}
+  datacenter:          {label: "Data center attivi",                       group: datacenter,  R: 750,  w: 0.7, mode: noise}
+  datacenter_progetto: {label: "Data center in costruzione / progetto",    group: datacenter,  R: 750,  w: 0.5, mode: noise}
+  contaminato:         {label: "Siti contaminati (SIN, AGISCO, diossine, PCB, amianto, roghi)", group: contaminazioni, R: 1500, w: 1.6, mode: soil}
+  pfas:                {label: "Contaminazione PFAS acque",                group: contaminazioni, R: 2500, w: 1.0, mode: soil}
+  aeroporto:           {label: "Aeroporti",                                group: trasporti,   R: 4000, w: 1.4, mode: noise}
+  aviosuperficie:      {label: "Aeroporti minori / aviosuperfici",         group: trasporti,   R: 800,  w: 0.4, mode: noise}
+  ferrovia:            {label: "Ferrovie",                                 group: trasporti,   R: 150,  w: 0.4, mode: noise, line: true}
+  autostrada:          {label: "Autostrade",                               group: strade,      R: 500,  w: 1.0, mode: air, line: true}
+  superstrada:         {label: "Superstrade / tangenziali",                group: strade,      R: 300,  w: 0.8, mode: air, line: true}
+  primaria:            {label: "Strade primarie",                          group: strade,      R: 150,  w: 0.5, mode: air, line: true}
+  secondaria:          {label: "Strade secondarie",                        group: strade,      R: 90,   w: 0.3, mode: air, line: true}
+  terziaria:           {label: "Strade terziarie",                         group: strade,      R: 60,   w: 0.15, mode: air, line: true}
+
+groups:   # ordine = canali dati; colore per legenda
+  pesante:        {label: "Industria pesante e impianti a combustione", color: "#b71c1c"}
+  industria:      {label: "Aree industriali e logistica",               color: "#8e44ad"}
+  rifiuti:        {label: "Rifiuti, discariche, cave",                  color: "#6d4c41"}
+  datacenter:     {label: "Data center (rumore)",                       color: "#37474f"}
+  strade:         {label: "Traffico stradale",                          color: "#e53935"}
+  trasporti:      {label: "Aeroporti e ferrovie (rumore)",              color: "#1565c0"}
+  contaminazioni: {label: "Suoli e acque contaminati",                  color: "#880e4f"}
+
+services:
+  scuola:       {label: "Scuole / asili / università", color: "#3949ab", d0: 600,  d1: 2000,  w: 0.20}
+  ospedale:     {label: "Ospedali",                    color: "#d81b60", d0: 2500, d1: 10000, w: 0.15}
+  medico:       {label: "Medici / ambulatori",         color: "#ec407a", d0: 800,  d1: 3000,  w: 0.10}
+  farmacia:     {label: "Farmacie",                    color: "#43a047", d0: 600,  d1: 2500,  w: 0.10}
+  stazione:     {label: "Stazioni treno / metro",      color: "#1e88e5", d0: 1000, d1: 4000,  w: 0.20}
+  fermata:      {label: "Fermate bus / tram",          color: "#00acc1", d0: 300,  d1: 1000,  w: 0.15}
+  supermercato: {label: "Supermercati",                color: "#8d6e63", d0: 600,  d1: 2500,  w: 0.10}
+
+scoring:
+  K: 2.5             # salubrità = 100·exp(−(fondo + fonti·(1 − mitigazione·verde)) / K)
+  mitigation: 0.35
+  green_radius_m: 300
+  aq_weight: 1.0
+  alpha: 0.6         # peso salubrità nell'indice combinato
+
+weather:
+  wind_grid_step_deg: 0.4        # griglia punti vento (ERA5 ~30 km: più fitto non aggiunge informazione)
+  aq_grid_step_deg: 0.25         # griglia punti CAMS (~10 km), poi corretta con le centraline ARPA
+  days: 365
+  openmeteo_calls_per_hour: 4000 # limite gratuito Open-Meteo: 5.000/ora, 10.000/giorno
+
+official:
+  # Servizi ArcGIS REST della Regione (scoperti e scaricati automaticamente, se raggiungibili)
+  arcgis_root: https://www.cartografia.servizirl.it/expo/rest/services/gpt
+  contaminated_service: siti_bonificati_contaminati
+  # parole chiave per scoprire altri servizi utili; i risultati sono elencati nel manifest della web app
+  discover:
+    - {pattern: "cav[ae]",            category: cava}
+    - {pattern: "discaric",           category: discarica}
+    - {pattern: "rifiut",             category: rifiuti}
+    - {pattern: "acustic|rumore",     overlay: true}
+    - {pattern: "aria|emission",      overlay: true}
+  socrata: https://www.dati.lombardia.it/resource
+  arpa_stations_dataset: ib47-atvt     # anagrafica sensori qualità dell'aria
+  arpa_measures_dataset: nicp-bhqi     # misure sensori qualità dell'aria (dal 2018)

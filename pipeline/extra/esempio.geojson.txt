@@ -1,0 +1,6 @@
+{"type": "FeatureCollection", "features": [
+  {"type": "Feature", "properties": {"categoria": "datacenter_progetto", "nome": "Esempio: data center in progetto", "raggio": 250, "fonte": "delibera comunale n. …"},
+   "geometry": {"type": "Point", "coordinates": [9.1234, 45.4567]}},
+  {"type": "Feature", "properties": {"categoria": "contaminato", "nome": "Esempio: area con roghi ricorrenti", "peso": 0.8, "fonte": "segnalazione"},
+   "geometry": {"type": "Polygon", "coordinates": [[[9.20, 45.50], [9.21, 45.50], [9.21, 45.505], [9.20, 45.505], [9.20, 45.50]]]}}
+]}

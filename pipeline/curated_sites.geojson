@@ -1,0 +1,743 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Milano – Silla 2 (Figino)",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.0778,
+     45.4967
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Brescia – Termoutilizzatore A2A",
+    "raggio": 350,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.228,
+     45.514
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Bergamo – Termovalorizzatore via Goltara",
+    "raggio": 200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.637,
+     45.672
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Dalmine – REA",
+    "raggio": 200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.615,
+     45.6375
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Como – Termovalorizzatore",
+    "raggio": 200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.0845,
+     45.7888
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Valmadrera – Silea",
+    "raggio": 200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.3575,
+     45.8455
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Desio – BEA",
+    "raggio": 200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.198,
+     45.6105
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Trezzo sull'Adda – Termovalorizzatore",
+    "raggio": 200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.5115,
+     45.605
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Parona – Lomellina Energia",
+    "raggio": 250,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     8.756,
+     45.2855
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Corteolona – Termovalorizzatore",
+    "raggio": 250,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.36,
+     45.16
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Busto Arsizio – Accam (stato operativo da verificare)",
+    "raggio": 200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     8.859,
+     45.6175
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "inceneritore",
+    "nome": "Cremona – Termovalorizzatore (stato operativo da verificare)",
+    "raggio": 200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.048,
+     45.1335
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "raffineria",
+    "nome": "Sannazzaro de' Burgondi – Raffineria Eni",
+    "raggio": 1200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     8.903,
+     45.102
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "centrale",
+    "nome": "Turbigo – Centrale termoelettrica",
+    "raggio": 400,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     8.738,
+     45.529
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "centrale",
+    "nome": "Tavazzano con Villavesco – Centrale",
+    "raggio": 400,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.415,
+     45.332
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "centrale",
+    "nome": "Cassano d'Adda – Centrale",
+    "raggio": 350,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.518,
+     45.518
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "centrale",
+    "nome": "Ostiglia – Centrale",
+    "raggio": 400,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     11.125,
+     45.064
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "Cremona – Acciaieria Arvedi",
+    "raggio": 800,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.08,
+     45.12
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "Dalmine – Tenaris",
+    "raggio": 600,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.6,
+     45.647
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "Lonato del Garda – Feralpi",
+    "raggio": 400,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.468,
+     45.451
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "Brescia – Alfa Acciai",
+    "raggio": 400,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.268,
+     45.523
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "Brescia – ORI Martin",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.222,
+     45.556
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "San Zeno Naviglio – acciaieria",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.215,
+     45.493
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "Calvisano – Acciaierie di Calvisano",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.32,
+     45.348
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "Odolo – Ferriera Valsabbia",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.387,
+     45.644
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "acciaieria",
+    "nome": "Lovere – Lucchini RS",
+    "raggio": 400,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.07,
+     45.813
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "aeroporto",
+    "nome": "Milano Malpensa",
+    "raggio": 2000,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     8.7255,
+     45.6301
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "aeroporto",
+    "nome": "Milano Linate",
+    "raggio": 1200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2767,
+     45.4451
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "aeroporto",
+    "nome": "Bergamo Orio al Serio",
+    "raggio": 1200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.7003,
+     45.6689
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "aeroporto",
+    "nome": "Brescia Montichiari",
+    "raggio": 1200,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.3306,
+     45.4289
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "contaminato",
+    "nome": "SIN Sesto San Giovanni (aree ex Falck)",
+    "raggio": 700,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.24,
+     45.535
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "contaminato",
+    "nome": "SIN Pioltello-Rodano (polo chimico ex SISAS)",
+    "raggio": 500,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.345,
+     45.488
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "contaminato",
+    "nome": "SIN Milano-Bovisa (ex gasometri)",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.16,
+     45.505
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "contaminato",
+    "nome": "SIN Brescia-Caffaro (PCB, diossine)",
+    "raggio": 1000,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.205,
+     45.533
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "contaminato",
+    "nome": "SIN Broni (ex Fibronit, amianto)",
+    "raggio": 400,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.262,
+     45.063
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "contaminato",
+    "nome": "SIN Laghi di Mantova e polo chimico",
+    "raggio": 1500,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     10.825,
+     45.165
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "contaminato",
+    "nome": "Seveso/Meda – ex ICMESA 1976 (bonificato, oggi Bosco delle Querce)",
+    "raggio": 500,
+    "fonte": "elenco curato (posizione approssimata)",
+    "peso": 0.3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.15,
+     45.652
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "pfas",
+    "nome": "Crespiatica – PFAS acque potabili oltre 1.000 ng/l (2023)",
+    "raggio": 800,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.577,
+     45.356
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "pfas",
+    "nome": "Corte Palasio – PFAS acque potabili (2023)",
+    "raggio": 800,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.562,
+     45.31
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "pfas",
+    "nome": "Milano Assiano (via Cusago) – PFAS confermati da ATS (2023)",
+    "raggio": 500,
+    "fonte": "elenco curato (posizione approssimata)",
+    "peso": 0.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.075,
+     45.457
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "datacenter",
+    "nome": "Ponte San Pietro – Aruba Global Cloud Data Center",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.586,
+     45.703
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "datacenter",
+    "nome": "Siziano – data center",
+    "raggio": 250,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2,
+     45.317
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "datacenter_progetto",
+    "nome": "Noviglio – data center (cantiere/avvio: verificare)",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.05,
+     45.357
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "datacenter_progetto",
+    "nome": "Settimo Milanese–Cusago – progetto Equinix (7 data center, 2026–2033)",
+    "raggio": 700,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.035,
+     45.47
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "datacenter_progetto",
+    "nome": "Pregnana Milanese – data center in progetto",
+    "raggio": 300,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     8.995,
+     45.515
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "categoria": "datacenter_progetto",
+    "nome": "Borgarello / Certosa di Pavia – data center in progetto",
+    "raggio": 400,
+    "fonte": "elenco curato (posizione approssimata)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.155,
+     45.24
+    ]
+   }
+  }
+ ]
+}

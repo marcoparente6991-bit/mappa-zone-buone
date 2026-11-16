@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mappa zone buone – Lombardia</title>
+  <meta name="description" content="Salubrità e servizi delle aree della Lombardia: fonti inquinanti, vento, qualità dell'aria, verde e servizi per valutazioni immobiliari.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231a7f5a'/><path d='M8 22c4-10 12-12 16-12-2 6-6 14-16 12z' fill='white'/></svg>">
+</head>
+<body>
+  <div id="app">
+    <aside id="side">
+      <header class="brand">
+        <div class="logo">◐</div>
+        <div><h1>Mappa zone buone</h1><p>Salubrità e servizi · Lombardia</p></div>
+      </header>
+      <nav id="tabs">
+        <button data-p="p-index" class="on" title="Indice e pesi"><span>◎</span>Indice</button>
+        <button data-p="p-layers" title="Livelli"><span>≡</span>Livelli</button>
+        <button data-p="p-tools" title="Strumenti"><span>⌖</span>Strumenti</button>
+        <button data-p="p-props" title="Immobili"><span>⌂</span>Immobili</button>
+        <button data-p="p-comuni" title="Classifica comuni"><span>▤</span>Comuni</button>
+        <button data-p="p-info" title="Dati e metodo"><span>i</span>Info</button>
+      </nav>
+
+      <section class="pane on" id="p-index">
+        <div class="field"><label>Cosa mostrare</label>
+          <select id="mode">
+            <option value="comb">Indice combinato (salubrità + servizi)</option>
+            <option value="sal">Salubrità</option>
+            <option value="serv">Dotazione di servizi</option>
+            <option value="aria">Qualità dell'aria (PM2.5)</option>
+          </select>
+        </div>
+        <div class="field"><label>Peso della salubrità nel combinato <b id="alphaV"></b></label><input type="range" id="alpha" min="0" max="100"></div>
+        <div class="field"><label>Opacità <b id="opaV"></b></label><input type="range" id="opa" min="0" max="100" value="70"></div>
+        <h3>Pressioni ambientali <small>peso dal vivo</small></h3>
+        <div id="groupSliders"></div>
+        <h3>Fattori generali</h3>
+        <div class="field"><label>Qualità dell'aria di fondo <b id="aqwV"></b></label><input type="range" id="aqw" min="0" max="30"></div>
+        <div class="field"><label>Mitigazione di verde e acqua <b id="mitV"></b></label><input type="range" id="mit" min="0" max="70"></div>
+        <h3>Servizi <small>peso · distanza ideale</small></h3>
+        <div id="servSliders"></div>
+        <div class="row gap"><button class="btn ghost" id="resetP">Ripristina predefiniti</button></div>
+      </section>
+
+      <section class="pane" id="p-layers">
+        <h3>Mappa di base</h3>
+        <select id="basemap">
+          <option value="positron">Chiara (OpenFreeMap)</option>
+          <option value="liberty">Stradale (OpenFreeMap)</option>
+          <option value="bright">Colori vivaci (OpenFreeMap)</option>
+          <option value="sat">Satellite (Esri)</option>
+        </select>
+        <h3>Fonti di pressione <small>retinate</small></h3>
+        <div class="row gap"><button class="btn ghost sm" id="catAll">Tutte</button><button class="btn ghost sm" id="catNone">Nessuna</button></div>
+        <div id="catList" class="checklist"></div>
+        <h3>Servizi</h3>
+        <div id="servList" class="checklist"></div>
+        <h3>Altri livelli</h3>
+        <div class="checklist">
+          <label><input type="checkbox" id="lyArpa" checked> Centraline ARPA (medie annuali)</label>
+          <label><input type="checkbox" id="lyComuni"> Comuni colorati per indice</label>
+          <label><input type="checkbox" id="lyConfine" checked> Confine regionale</label>
+        </div>
+        <h3>Servizi cartografici ufficiali <small>WMS</small></h3>
+        <div id="wmsList" class="checklist"></div>
+        <details><summary>Aggiungi un WMS</summary>
+          <input id="wmsUrl" placeholder="URL del servizio WMS"><input id="wmsLayers" placeholder="layer (es. 0,1)">
+          <button class="btn sm" id="wmsAdd">Aggiungi</button>
+        </details>
+      </section>
+
+      <section class="pane" id="p-tools">
+        <h3>Misure</h3>
+        <div class="row gap wrap">
+          <button class="btn ghost" data-tool="dist">↔ Distanza</button>
+          <button class="btn ghost" data-tool="area">▱ Area</button>
+          <button class="btn ghost" data-tool="stats">▦ Analizza un'area</button>
+          <button class="btn ghost" id="toolClear">✕ Cancella</button>
+        </div>
+        <p class="hint" id="toolHint">Clic per aggiungere punti, doppio clic per chiudere, Esc per annullare.</p>
+        <div id="toolOut"></div>
+        <h3>Filtra le zone <label class="switch"><input type="checkbox" id="fOn"><span></span></label></h3>
+        <div id="filterBox" class="dim">
+          <div class="field"><label>Indice combinato almeno <b id="fCombV"></b></label><input type="range" id="fComb" min="0" max="95" value="0"></div>
+          <div class="field"><label>Salubrità almeno <b id="fSalV"></b></label><input type="range" id="fSal" min="0" max="95" value="0"></div>
+          <div class="field"><label>PM2.5 al massimo <b id="fPmV"></b></label><input type="range" id="fPm" min="5" max="40" value="40"></div>
+          <div class="field"><label>Lontano da autostrade/superstrade almeno <b id="fBigV"></b></label><input type="range" id="fBig" min="0" max="2000" step="50" value="0"></div>
+          <div class="field"><label>Lontano dalla ferrovia almeno <b id="fRailV"></b></label><input type="range" id="fRail" min="0" max="1000" step="25" value="0"></div>
+          <div id="fServ"></div>
+          <label class="inline"><input type="checkbox" id="fHide" checked> Nascondi le zone escluse (altrimenti in grigio)</label>
+        </div>
+      </section>
+
+      <section class="pane" id="p-props">
+        <p class="hint">Cerca un indirizzo o clicca sulla mappa, poi «Salva immobile». I dati restano nel tuo browser.</p>
+        <div id="propList"></div>
+        <div class="row gap wrap">
+          <button class="btn" id="cmpOpen">Confronta</button>
+          <button class="btn ghost" id="propCsv">Esporta CSV</button>
+          <label class="btn ghost">Importa CSV<input type="file" id="propImp" accept=".csv" hidden></label>
+        </div>
+      </section>
+
+      <section class="pane" id="p-comuni">
+        <p class="hint">Media su tutto il territorio comunale, con i pesi predefiniti. Clic per centrare.</p>
+        <input id="comQ" placeholder="Cerca comune…">
+        <div class="row gap"><select id="comSort"><option value="comb">Indice combinato</option><option value="sal">Salubrità</option><option value="serv">Servizi</option></select>
+          <select id="comDir"><option value="desc">migliori prima</option><option value="asc">peggiori prima</option></select></div>
+        <div id="comList" class="comlist"></div>
+      </section>
+
+      <section class="pane" id="p-info"><div id="infoBox"></div></section>
+    </aside>
+
+    <main id="mapwrap">
+      <div id="map"></div>
+      <div id="search"><input id="q" placeholder="Cerca indirizzo o comune…" autocomplete="off"><div id="qres"></div></div>
+      <div id="legend"></div>
+      <div id="toast"></div>
+      <aside id="card" class="hidden"><button class="x" id="cardX">×</button><div id="cardBody"></div></aside>
+    </main>
+  </div>
+  <div id="cmp" class="hidden"><div class="cmpbar"><b>Confronto immobili</b><span class="sp"></span><button class="btn" id="cmpPrint">Stampa / PDF</button><button class="btn ghost" id="cmpX">Chiudi</button></div><div id="cmpBody"></div></div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

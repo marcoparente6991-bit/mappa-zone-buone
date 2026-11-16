@@ -1,0 +1,8 @@
+.cache/
+.cache_test/
+web/node_modules/
+web/dist/
+web/public/data/*
+!web/public/data/.gitkeep
+__pycache__/
+*.pyc

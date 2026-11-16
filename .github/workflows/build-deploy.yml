@@ -1,0 +1,100 @@
+name: Build e pubblica
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 2 3 * *"          # il 3 di ogni mese: dati aggiornati (OSM, vento, aria, dati ufficiali)
+  workflow_dispatch:
+    inputs:
+      ricalcola:
+        description: "Ricalcola i dati anche se non è cambiato nulla nella pipeline"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Chiave dei dati (pipeline + mese)
+        id: key
+        run: echo "k=dati-${{ hashFiles('pipeline/**') }}-$(date -u +%Y-%m)" >> "$GITHUB_OUTPUT"
+
+      - name: Dati già calcolati
+        id: cache
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && !inputs.ricalcola)
+        uses: actions/cache/restore@v4
+        with:
+          path: web/public/data
+          key: ${{ steps.key.outputs.k }}
+
+      - name: Python
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+
+      - name: Strumenti GIS (osmium, tippecanoe)
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq osmium-tool libsqlite3-dev zlib1g-dev
+          git clone -q --depth 1 https://github.com/felt/tippecanoe.git /tmp/tippecanoe
+          make -s -C /tmp/tippecanoe -j4
+          sudo make -s -C /tmp/tippecanoe install
+          tippecanoe --version
+
+      - name: Calcolo dei dati (30–120 minuti)
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          pip install -q -r pipeline/requirements.txt
+          python pipeline/build.py
+
+      - name: Salva i dati calcolati
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: web/public/data
+          key: ${{ steps.key.outputs.k }}
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Build della web app
+        working-directory: web
+        run: |
+          npm ci
+          npm run build
+          ls -la dist/data
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
